@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ app_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>{{ app_name }}</h1>
+      <p class="disclaimer">
+        A supportive space to talk about how you're feeling. This is general emotional support —
+        not medical advice, diagnosis, or therapy.
+      </p>
+    </header>
+
+    <main class="chat-wrapper">
+      <div class="mood-selector" id="moodSelector">
+        <span class="mood-label">How are you feeling?</span>
+        <div class="mood-options">
+          <button type="button" class="mood-btn" data-mood="sad">Sad</button>
+          <button type="button" class="mood-btn" data-mood="stressed">Stressed</button>
+          <button type="button" class="mood-btn" data-mood="lonely">Lonely</button>
+          <button type="button" class="mood-btn" data-mood="angry">Angry</button>
+          <button type="button" class="mood-btn" data-mood="confused">Confused</button>
+          <button type="button" class="mood-btn" data-mood="other">Other</button>
+        </div>
+      </div>
+
+      <div class="chat-container" id="chatContainer" aria-live="polite">
+        <div class="message bot-message welcome-message">
+          <div class="bubble">
+            Hi there. I'm here to listen and offer gentle, practical support.
+            How are you feeling today?
+          </div>
+        </div>
+      </div>
+
+      <div class="loading-indicator hidden" id="loadingIndicator" aria-hidden="true">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="loading-text">Thinking...</span>
+      </div>
+
+      <div class="error-banner hidden" id="errorBanner" role="alert"></div>
+
+      <form class="input-area" id="chatForm">
+        <textarea
+          id="messageInput"
+          placeholder="Share what's on your mind..."
+          rows="2"
+          maxlength="1000"
+          aria-label="Your message"
+        ></textarea>
+        <button type="submit" id="sendBtn" aria-label="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      This chatbot gives general support and is not a replacement for professional help.
+      If you are in crisis, please contact emergency services or a crisis helpline immediately.
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
